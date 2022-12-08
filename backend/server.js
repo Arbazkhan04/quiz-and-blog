@@ -5,12 +5,12 @@ const cors = require('cors');
 const path = require('path');
 
 
-// const ApplicationConfirgration=require('./configration/loadMyConfigrationFile') 
+const ApplicationConfirgration=require('./configration/loadMyConfirgrationfile') 
 //first load env file then load other file
 //otherwise it will through an error like " MongoDb is not connectedMongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 
 
-// const dataBaseConfirgration = require('./configration/dataBaseConfigration')
+ const dataBaseConfirgration = require('./configration/dataBaseConfirgration')
 
 
 //Block End Dependencies
@@ -82,7 +82,7 @@ app.use((error, req, res, next) => {
 //Start Block For Listening Your App On Defined Port
 app.listen(PORT, () => {
     console.log(`You Application has Launched from the Port 🚀 🚀 ${PORT}`);
-    //  console.log(process.env.STRIPE_DEVELOPMENT_KEY);
+     console.log(process.env);
 })
 
 
