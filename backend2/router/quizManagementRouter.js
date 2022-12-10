@@ -7,7 +7,7 @@ const {quiz}=require('../controller/quizManagementController')
 // calling my controller 
 
 // callig my http method 
-Router.get('/quiz',quiz)
+Router.post('/quiz',quiz)
 // callig my http method 
 
 // exproting my router 

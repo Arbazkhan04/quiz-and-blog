@@ -1,11 +1,30 @@
-const quiz=(req,res)=>{
+const quizModal=require('../modal/questionManagementModal')
+
+const quiz= async (req,res)=>{
     try {
-        res.json({
-            Message:"you have reached the endpoint of api"
+
+        const { description ,alternatives} = req.body
+        const docToCreate= new quizModal({
+            description,
+            alternatives
         })
-    } catch (error) {
+        const docToSave= await docToCreate.save();
         
-    }
+        console.log(docToSave); 
+        res.json({
+            Message:`Your Data is saved Successfully`,          // when u get data from frontend then use this....
+            Body:docToSave,
+            Data:true
+        })
+        
+        } catch (error) {
+            console.log(error);
+            res.json({
+                Message:error.message,
+                Result:null,
+                Data:false
+            });
+        }
 }
 
 
