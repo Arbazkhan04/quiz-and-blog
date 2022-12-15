@@ -15,7 +15,8 @@ const QuestionSchema = new mongoose.Schema({
                 default: false
             }
         }
-    ]
+    ],
+    softDelete:{type:Number,default:0},
 })
 
 module.exports = mongoose.model('Question', QuestionSchema)
