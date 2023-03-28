@@ -6,7 +6,8 @@ const routes: Routes = [
 
   { path: 'mian-module', loadChildren: () => import('./main-module/main-module.module').then(m => m.MainModuleModule) }, 
 
-  { path: 'admin-module', loadChildren: () => import('./admin-module/admin-module.module').then(m => m.AdminModuleModule) }];
+  { path: 'admin-module', loadChildren: () => import('./admin-module/admin-module.module').then(m => m.AdminModuleModule) },
+  { path: 'ManagementModule', loadChildren: () => import('./management-module/management-module.module').then(m => m.ManagementModuleModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
