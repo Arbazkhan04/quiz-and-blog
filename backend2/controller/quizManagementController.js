@@ -3,10 +3,9 @@ const quizModal=require('../modal/questionManagementModal')
 const quiz= async (req,res)=>{
     try {
 
-        const { description ,alternatives} = req.body
+        const {quize} = req.body
         const docToCreate= new quizModal({
-            description,
-            alternatives
+            quize
         })
         const docToSave= await docToCreate.save();
         
@@ -44,7 +43,6 @@ const getAllQuestion=async (req,res)=>{
             });
     }
 }
-
 const getQuestionById = async (req,res)=>{                           // stop there ✋✋✋        // frontend get api first create (getDocumentById) and export it through destrcut
     try {
         const ID = req.params.id;  //controller Id and router Id getDoucmentById/:Id should match 
@@ -95,7 +93,7 @@ const getQuestionById = async (req,res)=>{                           // stop the
         
           const docToUpDate = await quizModal.updateOne(
             {_id:ID},
-            PayLoad
+            PayLoad,
           )
            res.json({
             Message:`Document has been Updated`,
