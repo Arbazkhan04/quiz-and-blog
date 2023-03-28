@@ -6,6 +6,7 @@ import { AdminModuleComponent } from './admin-module.component';
 import { AdminComponentComponent } from './admin-component/admin-component.component';
 import { DashboardComponent } from './admin-component/dashboard/dashboard.component';
 import { CreateQuizComponent } from './admin-component/create-quiz/create-quiz.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { CreateQuizComponent } from './admin-component/create-quiz/create-quiz.c
   ],
   imports: [
     CommonModule,
-    AdminModuleRoutingModule
+    AdminModuleRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AdminModuleModule { }
