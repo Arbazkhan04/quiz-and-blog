@@ -11,8 +11,7 @@ const createQuiz = async (req, res) => {
         Body: docToSave,
         Data: true
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error) {      console.log(error);
       res.json({
         Message: error.message,
         Result: null,
@@ -38,49 +37,32 @@ const getAllQuestion = async (req, res) => {
         });
     }
 }
-const getQuestionById = async (req, res) => {                           // stop there ✋✋✋        // frontend get api first create (getDocumentById) and export it through destrcut
-    try {
-        const ID = req.params.id;  //controller Id and router Id getDoucmentById/:Id should match 
-        const docToFind = await quizModal.findOne({ _id: ID })
-        res.json({
-            Message: "Data Found", //we will update data on post request 
-            Data: true,
-            Result: docToFind
-        })
-    }
-    catch (error) {
-        res.json({
-            Message: error.message,
-            Result: null,
-            Data: false
-        })
-    }
 
-}
 
-// const updateQuiz=async(req,res)=>{
-//     try {
-//         const _id = req.params.id 
-//         const { description, alternatives } = req.body
+const getOneQuestionByIDAndObjId = async (req, res) => {
+  try {
+    const ID = req.params.id;
+    const ObjectId = req.params.objectId;
 
-//         let question = await quizModal.findOne({_id})
+    const docToFind = await quizModal.findOne(
+      { _id: ID, "quize._id": ObjectId },
+      { "quize.$": 1 } // select the matched question object
+    );
 
-//         if(!question){
-//             question = await quizModal.create({
-//                 description,
-//                 alternatives
-//             })    
-//             return res.status(201).json(question)
-//         }else{
-//             question.description = description
-//             question.alternatives = alternatives
-//             await question.save()
-//             return res.status(200).json(question)
-//         }
-//     } catch (error) {
-//         return res.status(500).json({"error":error})
-//     }
-// }
+    res.json({
+      Message: "Data Found",
+      Data: true,
+      Result: docToFind
+    });
+  } catch (error) {
+    res.json({
+      Message: error.message,
+      Result: null,
+      Data: false
+    });
+  }
+};
+
 
 //appending more objects into the same array - start
 
@@ -93,7 +75,7 @@ const appendQuiz = async (req, res) => {
       { _id: ID },
       { $addToSet: { quize: newQuestion } },
       { new: true, upsert: true } //upsert will add newId automaticllay if the ito the array obejct
-    ).lean();
+    ).lean();//convert into plain js object
 
     res.json({
       Message: `Document has been updated`,
@@ -172,7 +154,7 @@ const DeleteProductById = async (req, res) => {
 module.exports = {
     createQuiz,
     getAllQuestion,
-    getQuestionById,
+    getOneQuestionByIDAndObjId,
     appendQuiz,
     updateQuiz,
     DeleteProductById
