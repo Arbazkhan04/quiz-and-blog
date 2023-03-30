@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { QuizService } from 'src/app/shared/services/quiz.service';
 
 @Component({
   selector: 'app-create-quiz',
@@ -7,9 +8,12 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./create-quiz.component.css']
 })
 export class CreateQuizComponent implements OnInit {
-  questionForm: FormGroup|any;
+  questionForm: FormGroup | any;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private _quizSerivce:QuizService
+    ) { }
 
   ngOnInit() {
     this.buildForm();
@@ -32,7 +36,6 @@ export class CreateQuizComponent implements OnInit {
         })
       ])
     });
-    console.log(this.questionForm.value)
   }
 
   generateAlternative() {
@@ -42,5 +45,11 @@ export class CreateQuizComponent implements OnInit {
     });
   }
 
-  
+  submitform() {
+    console.log(this.questionForm.value);
+    let result=this.questionForm.value;
+    this._quizSerivce.createQuiz(result).subscribe((res:any)=>{
+      res.Body;
+    })
+  }
 }

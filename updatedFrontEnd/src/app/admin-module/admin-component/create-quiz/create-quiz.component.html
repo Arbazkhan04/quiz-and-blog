@@ -1,4 +1,4 @@
-<form [formGroup]="questionForm" (ngSubmit)="buildForm()" class="container mt-5">
+<form [formGroup]="questionForm" (ngSubmit)="submitform()" class="container mt-5">
   <div formArrayName="quize">
     <div *ngFor="let question of questionForm.get('quize').controls; let i = index" [formGroupName]="i" class="card mb-4">
       <div class="card-body">
