@@ -1,28 +1,60 @@
-<form [formGroup]="questionForm" (ngSubmit)="onSubmit()" class="needs-validation bg-light p-4 rounded" novalidate>
-  <div class="mb-3">
-    <h1 class="text-centre">Welcome to the create Question</h1>
-    <label for="description" class="form-label">Question:</label>
-    <input type="text" class="form-control shadow-sm" id="description" formControlName="description" required>
-    <div class="invalid-feedback">
-      Please provide a description for the question.
-    </div>
-  </div>
-  <div formArrayName="alternatives">
-    <div *ngFor="let alternative of questionForm.get('alternatives').controls; let i = index" class="mb-3 p-3 bg-white rounded shadow-sm">
-      <div [formGroupName]="i">
-        <label for="text{{ i }}" class="form-label">
-          Alternative {{ i + 1 }}:
-        </label>
-        <input type="text" class="form-control" id="text{{ i }}" formControlName="text" required>
-        <div class="invalid-feedback">
-          Please provide a text for the alternative.
+<form [formGroup]="questionForm" (ngSubmit)="buildForm()" class="container mt-5">
+  <div formArrayName="quize">
+    <div *ngFor="let question of questionForm.get('quize').controls; let i = index" [formGroupName]="i" class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Question {{ i + 1 }}</h3>
+        <div class="form-group">
+          <label>Subject:</label>
+          <input type="text" formControlName="subject" class="form-control">
+          <div *ngIf="question.get('subject').errors && (question.get('subject').dirty || question.get('subject').touched)">
+            <div class="alert alert-danger" *ngIf="question.get('subject').errors.required">
+              Subject is required.
+            </div>
+          </div>
         </div>
-        <div class="form-check mt-2">
-          <input class="form-check-input" type="checkbox" id="isCorrect{{ i }}" formControlName="isCorrect">
-          <label class="form-check-label" for="isCorrect{{ i }}">Is Correct</label>
+        <div class="form-group">
+          <label>Organization:</label>
+          <input type="text" formControlName="organization" class="form-control">
+          <div *ngIf="question.get('organization').errors && (question.get('organization').dirty || question.get('organization').touched)">
+            <div class="alert alert-danger" *ngIf="question.get('organization').errors.required">
+              Organization is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Set Name:</label>
+          <input type="text" formControlName="setName" class="form-control">
+          <div *ngIf="question.get('setName').errors && (question.get('setName').dirty || question.get('setName').touched)">
+            <div class="alert alert-danger" *ngIf="question.get('setName').errors.required">
+              Set Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description:</label>
+          <textarea formControlName="description" class="form-control"></textarea>
+          <div *ngIf="question.get('description').errors && (question.get('description').dirty || question.get('description').touched)">
+            <div class="alert alert-danger" *ngIf="question.get('description').errors.required">
+              Description is required.
+            </div>
+          </div>
+        </div>
+        <div formArrayName="alternatives">
+          <div *ngFor="let alternative of question.get('alternatives').controls; let j = index" [formGroupName]="j" class="form-check">
+            <input type="checkbox" formControlName="isCorrect" class="form-check-input">
+            <label class="form-check-label">
+              Alternative {{ j + 1 }}
+            </label>
+            <input type="text" formControlName="text" class="form-control">
+            <div *ngIf="alternative.get('text').errors && (alternative.get('text').dirty || alternative.get('text').touched)">
+              <div class="alert alert-danger" *ngIf="alternative.get('text').errors.required">
+                Alternative text is required.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button  type="submit" class="btn btn-outline-primary w-100">Submit</button>
 </form>
