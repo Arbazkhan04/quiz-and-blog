@@ -13,7 +13,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="tag">Select-subject</label>
-                    <select name="selectColor" formControlName="subject" class="form-control selectColor" id=""
+                    <select name="selectColor" formControlName="subject" (change)="onChangeSubjectData($event)" class="form-control selectColor" id=""
                         placeholder="selectColor">
                         <option value="" selected>--- Select a subjectName---</option>
                         <option *ngFor="let item of subjectName">{{item}}</option>
@@ -22,7 +22,7 @@
             </div>
             <div class="mb-3">
                 <label class="tag">Select-setNumber</label>
-                <select name="selectColor" formControlName="setName" class="form-control selectColor" id=""
+                <select name="selectColor" formControlName="setName" (change)="onChangeSetNumbertData($event)" class="form-control selectColor" id=""
                     placeholder="selectColor">
                     <option value="" selected>--- Select a setNumber ---</option>
                     <option *ngFor="let item of setNumber">{{item}}</option>

@@ -66,29 +66,39 @@ const getOneQuestionByIDAndObjId = async (req, res) => {
 
 //getQuestion  by organizationName-start
 getQuestionByOrganztionName = async (req, res) => {
-    let organzitionName = req.params.organization;
-    console.log(organzitionName);
-    const docToFind = await quizModal.find(
-      { "quize.organization": { $eq: organzitionName } }
-    );
-    if(docToFind.length===0)
-    {
-      res.json({
-        Message: `Documents not  found`,
-        Result: null,
-        Data: false
-      });
-  } 
-  else{
+  let organzitionName = req.params.organization;
+  console.log(organzitionName);
+  const docToFind = await quizModal.find(
+    { "quize.organization": { $eq: organzitionName } }
+  );
+  if (docToFind.length === 0) {
     res.json({
-      Message:"Document found",
-      Result:docToFind,
-      Data:true
+      Message: `Documents not  found`,
+      Result: null,
+      Data: false
+    });
+  }
+  else {
+    const quizObjects = [];
+    for (const doc of docToFind) {
+      quizObjects.push(...doc.quize);
+    }
+    res.json({
+      Message: "Document found",
+      Result: quizObjects,
+      Data: true
     })
   }
 };
 
 //getQuestion  by organizationName-end
+
+//get Question SetNumbet on the basic of subject name start
+const getQuestionSetNumber=async(req,res)=>{
+  const subjectName=req.params.subjectName;
+  const docToFind
+}
+//get Question SetNumbet on the basic of subject name end
 
 //appending more objects into the same array - start
 
@@ -116,6 +126,38 @@ const appendQuiz = async (req, res) => {
     });
   }
 };
+
+//find doucment by  organization name and set numebr and subject-start
+const findDocByOrganzation_SetNoAndSubjectName = async (req, res) => {
+  try {
+    const organzitionName = req.params.org;
+    const setNumber = req.params.set;
+    const subjectName = req.params.sub;
+
+    const docToFind = await quizModal.findOne({
+      "quize.organization": organzitionName,
+      "quize.subject": subjectName,
+      "quize.setName": setNumber,
+    },{
+      // Use the $slice operator to return only the first object in the quize array
+      "quize": { $slice: 1 }
+  })
+    res.json({
+      Message: "document found",
+      Result: docToFind,
+      Data: true
+    })
+  } catch (error) {
+    res.json({
+      Message: "document not found",
+      Result: null,
+      Data: false
+    })
+  }
+
+
+}
+//find doucment by  organization name and set numebr and subject-end
 
 //appending more objects into the same array - end
 
@@ -182,6 +224,7 @@ module.exports = {
   getAllQuestion,
   getOneQuestionByIDAndObjId,
   getQuestionByOrganztionName,
+  findDocByOrganzation_SetNoAndSubjectName,
   appendQuiz,
   updateQuiz,
   DeleteProductById

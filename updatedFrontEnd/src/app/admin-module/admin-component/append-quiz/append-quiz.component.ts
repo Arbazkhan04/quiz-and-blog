@@ -11,9 +11,16 @@ import { QuizService } from 'src/app/shared/services/quiz.service';
 export class AppendQuizComponent {
 
   organizationName = ["ecat", "net"];
-  subjectName = [];
+  subjectName = [];//simple 
   setNumber = [];
+  mySubUni={};//fetch uni
+  uniSetNo={}
+  id: string = "";
   questionObjectentity: FormGroup | any;
+  subjectName2: string = "";
+  setNumber2: string = "";
+  organizationName2: string = "";
+
 
 
   constructor(
@@ -47,21 +54,52 @@ export class AppendQuizComponent {
 
 
   submitForm() {
-    console.log(this.questionObjectentity.value)
+    console.log(this.questionObjectentity.value);
+    let result = this.questionObjectentity.value;
+    this._quizeServie.append_Quiz_Array(result, this.id).subscribe((res: any) => {
+      res.Result;
+    })
+  }
+
+  onChangeSubjectData(event: any) {
+    this.subjectName2 = event.target.value
+    console.log(event.target.value)
+  }
+
+  onChangeSetNumbertData(event: any) {
+    this.setNumber2 = event.target.value
+    console.log(event.target.value)
+    this._quizeServie.findDocIdByOrgazationSubAndSetName(this.organizationName2, this.setNumber2, this.subjectName2).subscribe((res: any) => {
+      console.log(res.Result)
+      this.id=res.Result._id;
+      console.log(this.id)
+
+    })
   }
 
 
   onChageFetchDataFromDropDown(event: any) {
+    this.organizationName2 = event.target.value;
     let value = event.target.value;
     this._quizeServie.appendquiz(value).subscribe((res: any) => {
-      const mySubjectNameArr = res.Result[0].quize.map((element: any) => element.subject);
-      this.subjectName = mySubjectNameArr;
+      const mySubjectNameArr = res.Result.map((element: any) => element.subject);
+      // this.subjectName = mySubjectNameArr;
+      // this.subjectName=[...new Set(mySubjectNameArr)]
+      this.subjectName=Array.from(new Set(mySubjectNameArr))//work in typeScript
+      console.log(this.subjectName)
+      // this.mySubUni = new Set([...mySubjectNameArr]);
+      // console.log(this.mySubUni);
       console.log(mySubjectNameArr); // check the contents of myarr
-      const mySetNumber = res.Result[0].quize.map((item: any) => item.setName);
-      this.setNumber = mySetNumber;
-      console.log(mySetNumber)
+      const mySetNumber = res.Result.map((item: any) => item.setName);
+      this.setNumber=Array.from(new Set(mySetNumber))//work in typeScript
+      console.log(this.setNumber)
+      // this.id = res.Result.map((item: any) => item._id);
+      // console.log(this.id)
+      // console.log(mySetNumber)
     });
+    
   }
-  
+ 
+
 
 }
