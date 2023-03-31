@@ -1,41 +1,42 @@
 const quizModal = require('../modal/questionManagementModal')
 
 const createQuiz = async (req, res) => {
-    try {
-      const { quize } = req.body;//when you are making a new doumetn you have to pass quize arrray with obejct but in updagtequzie you have to jsut pass the obejct
-      const docToCreate = new quizModal({ quize });
-      const docToSave = await docToCreate.save();
-  
-      res.json({
-        Message: `Your Data is saved Successfully`,
-        Body: docToSave,
-        Data: true
-      });
-    } catch (error) {      console.log(error);
-      res.json({
-        Message: error.message,
-        Result: null,
-        Data: false
-      });
-    }
-  };
+  try {
+    const { quize } = req.body;//when you are making a new doumetn you have to pass quize arrray with obejct but in updagtequzie you have to jsut pass the obejct
+    const docToCreate = new quizModal({ quize });
+    const docToSave = await docToCreate.save();
+
+    res.json({
+      Message: `Your Data is saved Successfully`,
+      Body: docToSave,
+      Data: true
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      Message: error.message,
+      Result: null,
+      Data: false
+    });
+  }
+};
 
 const getAllQuestion = async (req, res) => {
-    try {
-        docToGet = await quizModal.find();
-        res.json({
-            Message: `Your Data is saved Successfully`,          // when u get data from frontend then use this....
-            Body: docToGet,
-            Data: true
-        })
-    } catch (error) {
-        console.log(error);
-        res.json({
-            Message: error.message,
-            Result: null,
-            Data: false
-        });
-    }
+  try {
+    docToGet = await quizModal.find();
+    res.json({
+      Message: `Your Data is saved Successfully`,          // when u get data from frontend then use this....
+      Body: docToGet,
+      Data: true
+    })
+  } catch (error) {
+    console.log(error);
+    res.json({
+      Message: error.message,
+      Result: null,
+      Data: false
+    });
+  }
 }
 
 
@@ -63,6 +64,31 @@ const getOneQuestionByIDAndObjId = async (req, res) => {
   }
 };
 
+//getQuestion  by organizationName-start
+getQuestionByOrganztionName = async (req, res) => {
+    let organzitionName = req.body.organization;
+    console.log(organzitionName);
+    const docToFind = await quizModal.find(
+      { "quize.organization": { $eq: organzitionName } }
+    );
+    if(docToFind.length===0)
+    {
+      res.json({
+        Message: `Documents not  found`,
+        Result: null,
+        Data: false
+      });
+  } 
+  else{
+    res.json({
+      Message:"Document found",
+      Result:docToFind,
+      Data:true
+    })
+  }
+};
+
+//getQuestion  by organizationName-end
 
 //appending more objects into the same array - start
 
@@ -131,31 +157,32 @@ const updateQuiz = async (req, res) => {
 
 
 const DeleteProductById = async (req, res) => {
-    try {
-        const ID = req.params.id
-        const DocToDelete = await quizModal.updateOne(
-            { _id: ID },
-            { $set: { softDelete: 1 } }
-        );
-        res.json({
-            Message: 'Document has been Deleted',
-            Data: true,
-            Result: DocToDelete
-        })
-    } catch (error) {
-        res.json({
-            Message: error.message,
-            Result: null,
-            Data: false
-        })
-    }
+  try {
+    const ID = req.params.id
+    const DocToDelete = await quizModal.updateOne(
+      { _id: ID },
+      { $set: { softDelete: 1 } }
+    );
+    res.json({
+      Message: 'Document has been Deleted',
+      Data: true,
+      Result: DocToDelete
+    })
+  } catch (error) {
+    res.json({
+      Message: error.message,
+      Result: null,
+      Data: false
+    })
+  }
 }
 
 module.exports = {
-    createQuiz,
-    getAllQuestion,
-    getOneQuestionByIDAndObjId,
-    appendQuiz,
-    updateQuiz,
-    DeleteProductById
+  createQuiz,
+  getAllQuestion,
+  getOneQuestionByIDAndObjId,
+  getQuestionByOrganztionName,
+  appendQuiz,
+  updateQuiz,
+  DeleteProductById
 }

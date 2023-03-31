@@ -8,6 +8,7 @@ import { DashboardComponent } from './admin-component/dashboard/dashboard.compon
 import { CreateQuizComponent } from './admin-component/create-quiz/create-quiz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizAnalysticsComponent } from './admin-component/quiz-analystics/quiz-analystics.component';
+import { AppendQuizComponent } from './admin-component/append-quiz/append-quiz.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { QuizAnalysticsComponent } from './admin-component/quiz-analystics/quiz-
     AdminComponentComponent,
     DashboardComponent,
     CreateQuizComponent,
-    QuizAnalysticsComponent
+    QuizAnalysticsComponent,
+    AppendQuizComponent
   ],
   imports: [
     CommonModule,

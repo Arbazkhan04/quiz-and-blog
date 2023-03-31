@@ -11,4 +11,8 @@ export class QuizService {
   {
     return this.http.post('http://localhost:4441/quizMangementRouter/quiz',payload)
   }
+  appendquiz(organzantionName:string)
+  {
+    return this.http.get(`http://localhost:4441/quizMangementRouter/getQuestionByOrganztionName${organzantionName}`)
+  }
 }

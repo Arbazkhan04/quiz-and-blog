@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Welcome to the append quiz</h1>
+        <div class="mb-3">
+          <label class="tag">Select-organization</label>
+          <select name="selectColor" (change)="onChageFetchDataFromDropDown($event)" class="form-control selectColor" id="" placeholder="selectColor" formControlName="color">
+            <option value="" selected>--- Select an organization ---</option>
+            <option *ngFor="let item of organizationName">{{item}}</option>
+          </select>
+        </div> 
+      </div>
+    </div>
+  </div>
+  
