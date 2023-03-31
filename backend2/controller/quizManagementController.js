@@ -94,9 +94,24 @@ getQuestionByOrganztionName = async (req, res) => {
 //getQuestion  by organizationName-end
 
 //get Question SetNumbet on the basic of subject name start
-const getQuestionSetNumber=async(req,res)=>{
-  const subjectName=req.params.subjectName;
-  const docToFind
+const getQuestionSetNumber = async (req, res) => {
+  try {
+    const subjectName = req.params.subjectName;
+    const docToFind = await quizModal.find({
+      "quize.subject": subjectName
+    })
+    res.json({
+      Message: `Docement found`,
+      Result: docToFind,
+      Data: true
+    })
+  } catch (error) {
+    res.json({
+      Message: `Docement not found`,
+      Result: null,
+      Data: false
+    })
+  }
 }
 //get Question SetNumbet on the basic of subject name end
 
@@ -138,10 +153,10 @@ const findDocByOrganzation_SetNoAndSubjectName = async (req, res) => {
       "quize.organization": organzitionName,
       "quize.subject": subjectName,
       "quize.setName": setNumber,
-    },{
+    }, {
       // Use the $slice operator to return only the first object in the quize array
       "quize": { $slice: 1 }
-  })
+    })
     res.json({
       Message: "document found",
       Result: docToFind,
@@ -224,6 +239,7 @@ module.exports = {
   getAllQuestion,
   getOneQuestionByIDAndObjId,
   getQuestionByOrganztionName,
+  getQuestionSetNumber,
   findDocByOrganzation_SetNoAndSubjectName,
   appendQuiz,
   updateQuiz,

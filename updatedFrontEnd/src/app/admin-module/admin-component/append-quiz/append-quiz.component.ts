@@ -64,6 +64,14 @@ export class AppendQuizComponent {
   onChangeSubjectData(event: any) {
     this.subjectName2 = event.target.value
     console.log(event.target.value)
+    console.log(this.subjectName2)
+    this._quizeServie.getSetNumberBySubName(this.subjectName2).subscribe((res:any)=>{
+      console.log(res.Result)
+      const mySetNumber = res.Result.map((item: any) => item.quize[0].setName);
+      console.log(mySetNumber);
+      this.setNumber=Array.from(new Set(mySetNumber))//work in typeScript
+      console.log(this.setNumber)
+    })
   }
 
   onChangeSetNumbertData(event: any) {
@@ -90,9 +98,9 @@ export class AppendQuizComponent {
       // this.mySubUni = new Set([...mySubjectNameArr]);
       // console.log(this.mySubUni);
       console.log(mySubjectNameArr); // check the contents of myarr
-      const mySetNumber = res.Result.map((item: any) => item.setName);
-      this.setNumber=Array.from(new Set(mySetNumber))//work in typeScript
-      console.log(this.setNumber)
+      // const mySetNumber = res.Result.map((item: any) => item.setName);
+      // this.setNumber=Array.from(new Set(mySetNumber))//work in typeScript
+      // console.log(this.setNumber)
       // this.id = res.Result.map((item: any) => item._id);
       // console.log(this.id)
       // console.log(mySetNumber)
