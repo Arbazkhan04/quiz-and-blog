@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuizService } from 'src/app/shared/services/quiz.service';
 
 @Component({
   selector: 'app-append-quiz',
@@ -7,8 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppendQuizComponent {
  organizationName=["ecat","net"]
+  
+ constructor(private _quizeServie:QuizService)
+ {}
+
  onChageFetchDataFromDropDown(event:any)
  {
-  console.log(event.target.value);
+  let value=event.target.value;
+  this._quizeServie.appendquiz(value).subscribe((res)=>{
+    res
+  })
  }
+
+
 }

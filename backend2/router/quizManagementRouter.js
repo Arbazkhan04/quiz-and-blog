@@ -10,7 +10,7 @@ const {createQuiz,getAllQuestion,getQuestionByOrganztionName,getOneQuestionByIDA
 Router.post('/quiz',createQuiz);
 Router.get('/getAllQuestion',getAllQuestion);
 Router.get('/getOneQuestionByIDAndObjId/:id/:objectId',getOneQuestionByIDAndObjId);
-Router.get('/getQuestionByOrganztionName',getQuestionByOrganztionName);
+Router.get('/getQuestionByOrganztionName/:organization',getQuestionByOrganztionName);
 Router.post('/updateQuiz/:id/:objectId',updateQuiz)
 Router.post('/appendQuiz/:id',appendQuiz)
 Router.delete('/DeleteProductById',DeleteProductById)

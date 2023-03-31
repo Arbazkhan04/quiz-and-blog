@@ -66,7 +66,7 @@ const getOneQuestionByIDAndObjId = async (req, res) => {
 
 //getQuestion  by organizationName-start
 getQuestionByOrganztionName = async (req, res) => {
-    let organzitionName = req.body.organization;
+    let organzitionName = req.params.organization;
     console.log(organzitionName);
     const docToFind = await quizModal.find(
       { "quize.organization": { $eq: organzitionName } }

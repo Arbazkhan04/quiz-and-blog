@@ -13,6 +13,6 @@ export class QuizService {
   }
   appendquiz(organzantionName:string)
   {
-    return this.http.get(`http://localhost:4441/quizMangementRouter/getQuestionByOrganztionName${organzantionName}`)
+    return this.http.get(`http://localhost:4441/quizMangementRouter/getQuestionByOrganztionName/${organzantionName}`)
   }
 }
