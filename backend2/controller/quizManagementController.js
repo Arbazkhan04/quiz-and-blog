@@ -142,6 +142,36 @@ const appendQuiz = async (req, res) => {
   }
 };
 
+//find docment by organization and sunject name-start
+const findDocumentByOrgAndSubjectName = async (req, res) => {
+  try {
+    const organzitionName = req.params.org;
+    // const setNumber = req.params.set;
+    const subjectName = req.params.sub;
+
+    const docToFind = await quizModal.find({
+      "quize.organization": organzitionName,
+      "quize.subject": subjectName,
+      // "quize.setName": setNumber,
+    })
+    res.json({
+      Message: "document found",
+      Result: docToFind,
+      Data: true
+    })
+  } catch (error) {
+    res.json({
+      Message: "document not found",
+      Result: null,
+      Data: false
+    })
+  }
+
+
+}
+//find docment by organization and sunject name-end
+
+
 //find doucment by  organization name and set numebr and subject-start
 const findDocByOrganzation_SetNoAndSubjectName = async (req, res) => {
   try {
@@ -240,6 +270,7 @@ module.exports = {
   getOneQuestionByIDAndObjId,
   getQuestionByOrganztionName,
   getQuestionSetNumber,
+  findDocumentByOrgAndSubjectName,
   findDocByOrganzation_SetNoAndSubjectName,
   appendQuiz,
   updateQuiz,
