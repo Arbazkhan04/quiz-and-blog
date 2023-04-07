@@ -30,8 +30,13 @@ export class QuizAnalysticsComponent {
     });
   }
 
-  onChageFetchDataFormDubjectDropDown(event:any)
+  onChageFetchDataFormDubjectDropDown(event:any)//this. is used for get the value for set number 
   {
-
+    console.log(event.target.value);
+    let subName=event.target.value;
+    console.log(subName);
+    this._quizeServie.getetNumberByOrganizationAndSubjectName(this.organizationName2,subName).subscribe((res:any)=>{
+      res.Result;
+    })
   }
 }

@@ -27,4 +27,8 @@ export class QuizService {
   {
     return this.http.get(`http://localhost:4441/quizMangementRouter/getQuestionSetNumber/${subjectName}`)
   }
+  getetNumberByOrganizationAndSubjectName( orgName:string, subjectName:string)
+  {
+     return this.http.get(`http://localhost:4441/quizMangementRouter/findDocumentByOrgAndSubjectName/${orgName}/${subjectName}`)
+  }
 }
