@@ -86,7 +86,7 @@ export class AppendQuizComponent {
   }
 
 
-  onChageFetchDataFromDropDown(event: any) {
+  onChageFetchDataFromDropDown(event: any) {//organization
     this.organizationName2 = event.target.value;
     let value = event.target.value;
     this._quizeServie.appendquiz(value).subscribe((res: any) => {

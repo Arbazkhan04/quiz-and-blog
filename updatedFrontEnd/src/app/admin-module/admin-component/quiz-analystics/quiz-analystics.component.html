@@ -1,35 +1,28 @@
 <div class="container">
     <div class="row">
         <h1>Welcome to the Quiz Aanalystics</h1>
-        <div class="col-4">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+         <h3>Select Your Organization</h3>
+         <div class="col-4">
+            <div class="card shadow d-flex justify-content-center " style="width: 70rem;">
+              <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h5 class="card-title">QuizOne Set</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+                <h5 class="card-title" >Select Your Course</h5>
+                <div class="mb-3">
+                  <label class="tag">Select-organization</label>
+                  <select name="selectColor" (change)="onChageFetchDataFromDropDown($event)"
+                      class="form-control selectColor" id="" placeholder="selectColor" >
+                      <option value="" selected>--- Select an organization ---</option>
+                      <option *ngFor="let item of organaztions">{{item}}</option>
+                  </select>
             </div>
+            <div class="mb-3">
+              <label class="tag">Select-subject</label>
+              <select name="selectColor" (change)="onChageFetchDataFormDubjectDropDown($event)"
+                  class="form-control selectColor" id="" placeholder="selectColor" >
+                  <option value="" selected>--- Select an organization ---</option>
+                  <option *ngFor="let item of subjectName">{{item}}</option>
+              </select>
         </div>
-        <div class="col-4">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">QuizOne Set</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">QuizOne Set</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-        </div>
+          </div>
     </div>
 </div>
