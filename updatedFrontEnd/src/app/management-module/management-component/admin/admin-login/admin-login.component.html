@@ -1,0 +1,43 @@
+
+<div class="container mt-5" id="container">
+    <div class="form-container sign-in-container">
+        <form (ngSubmit)="SubmitLoginForm()" [formGroup]="LoginForm">
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your account</span>
+            <input type="text" placeholder="Name" formControlName="adminName" />
+            <!-- validation -->
+            <div class="error  text-danger"
+                *ngIf="LoginForm.controls['adminName'].invalid && (LoginForm.controls['adminName'].dirty || LoginForm.controls['adminName'].touched)">
+                <span *ngIf="LoginForm.controls['adminName'].errors.required">
+                    <small>Field Required!</small>
+                </span>
+            </div>
+            <!-- validation -->
+            <input type="password" placeholder="Password" formControlName="password" />
+            <!-- validation -->
+            <div class="error  text-danger"
+                *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)">
+                <span *ngIf="LoginForm.controls['password'].errors.required">
+                    <small>Field Required!</small>
+                </span>
+            </div>
+            <!-- validation -->
+            <a href="#">Forgot your adminPassword?</a>
+            <button type="submit" >Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p class="text-white">If you are not sign-in then go to sign-up page</p>
+                <!-- <button class="ghost" routerLink="../sign-up">Sign Up</button> -->
+            </div>
+        </div>
+    </div>
+</div>

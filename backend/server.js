@@ -44,10 +44,12 @@ app.all('*', (req, res, next) => {
 //Start Block Accessing The Routes in the Entry Point
 
 const quizMangementRouter = require('./router/quizMangamentRouter');
+const adminManagementRoutes = require ('./router/adminManagementRouter');
 
 
 //*****UsingRoutes*****//
 app.use('/quizMangementRouter', quizMangementRouter)
+app.use('/adminManagementRoutes', adminManagementRoutes)
 
 //*****UsingRoutes*****//
 
