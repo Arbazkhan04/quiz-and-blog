@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-main-module',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-module.component.css']
 })
 export class MainModuleComponent {
+
 
 }
