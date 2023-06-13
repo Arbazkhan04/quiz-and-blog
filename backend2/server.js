@@ -1,16 +1,15 @@
-
 //Block Start Dependencies
 const express = require('express');
 const cors = require('cors');
 
 
 
-const ApplicationConfirgration=require('./configration/loadMyConfirgrationfile') 
+const ApplicationConfirgration = require('./configration/loadMyConfirgrationfile')
 //first load env file then load other file
 //otherwise it will through an error like " MongoDb is not connectedMongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 
 
- const dataBaseConfirgration = require('./configration/dataBaseConfirgration')
+const dataBaseConfirgration = require('./configration/dataBaseConfirgration')
 
 
 //Block End Dependencies
@@ -24,7 +23,7 @@ app.use(express.text());
 app.use(express.raw());
 app.use(cors());
 app.use('/assets', express.static('assets'));
-const PORT = process.env.PORT | 4441;
+const PORT =  4441;
 //Block End Intialize the app
 
 
@@ -44,11 +43,12 @@ app.all('*', (req, res, next) => {
 //Start Block Accessing The Routes in the Entry Point
 
 const quizMangementRouter = require('./router/quizManagementRouter');
+const adminManagementRoutes = require ('./router/adminManagementRouter');
 
 
 //*****UsingRoutes*****//
 app.use('/quizMangementRouter', quizMangementRouter)
-
+app.use('/adminManagementRoutes', adminManagementRoutes)
 //*****UsingRoutes*****//
 
 

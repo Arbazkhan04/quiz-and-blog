@@ -9,7 +9,11 @@ import { CreateQuizComponent } from './admin-component/create-quiz/create-quiz.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizAnalysticsComponent } from './admin-component/quiz-analystics/quiz-analystics.component';
 import { AppendQuizComponent } from './admin-component/append-quiz/append-quiz.component';
-
+import { SideBarComponent } from './admin-component/side-bar/side-bar.component';
+import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,18 @@ import { AppendQuizComponent } from './admin-component/append-quiz/append-quiz.c
     DashboardComponent,
     CreateQuizComponent,
     QuizAnalysticsComponent,
-    AppendQuizComponent
+    AppendQuizComponent,
+    SideBarComponent
   ],
   imports: [
     CommonModule,
     AdminModuleRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    MatSidenavModule
   ]
 })
 export class AdminModuleModule { }

@@ -1,0 +1,70 @@
+.new-nav {
+    box-shadow: 0 0 15px rgba(8, 107, 107, 3.829);
+    /* background-color: #09575a; */
+    background-color: #09575a;
+}
+
+.navbar-brand {
+    background-image: linear-gradient(135deg, rgb(195, 236, 244) 10%, rgb(20, 212, 229) 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.bell-icon {
+    background-image: linear-gradient(135deg, rgb(195, 236, 244) 10%, rgb(20, 212, 229) 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+* rotate bell icon on hover */ .bell-icon {
+    /* Set the initial position of the bell icon */
+    display: inline-block;
+    transform-origin: center;
+}
+
+/* Define the left and right rotation animations using keyframes */
+@keyframes rotate-left {
+    from {
+        transform: rotate(20deg);
+    }
+
+    to {
+        transform: rotate(-30deg);
+    }
+}
+
+@keyframes rotate-right {
+    from {
+        transform: rotate(20deg);
+    }
+
+    to {
+        transform: rotate(10deg);
+    }
+}
+
+/* Apply the left and right rotation animations on hover */
+.bell-icon:hover {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+}
+
+.bell-icon:hover:hover {
+    animation-name: rotate-left, rotate-right;
+    animation-duration: 1s, 1s;
+    animation-delay: 0s, 1s;
+    animation-direction: alternate, alternate;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+}
+
+@media(max-width:991px){
+    .img{
+        width: 98%;
+    }
+}

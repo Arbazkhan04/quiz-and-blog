@@ -1,0 +1,56 @@
+.sidenav-container {
+    height: 100%;
+    background: rgb(228, 245, 248);
+  }
+  
+  .sidenav {
+    background-image: linear-gradient(330deg, rgb(195, 236, 244) 20%, rgb(20, 212, 229)100%);
+  }
+  
+  .main-content {
+    margin-left: 200px;
+    height: 100%;
+    background: #ffff;
+  }
+  
+  .full-width {
+    margin-left: 0;
+  }
+  
+  .side-nav-content {
+    color: white;
+    font-family: poppins;
+    font-weight: 700;
+    width: 200px;
+    margin-left: 5px;
+    margin-right: 11px;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    padding: 0px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .nav-item.active {
+    color: rgb(152, 230, 233);
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(8, 107, 107, 0.829);
+  }
+  
+  .nav-item:hover {
+    background-color: rgb(152, 230, 233);
+    color: white;
+    padding: 10px;
+  }
+  
+  .nav-item {
+    color: rgb(255, 255, 255);
+    padding: 10px;
+  }

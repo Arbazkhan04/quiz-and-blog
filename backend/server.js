@@ -24,7 +24,7 @@ app.use(express.text());
 app.use(express.raw());
 app.use(cors());
 app.use('/assets', express.static('assets'));
-const PORT =  4441;
+const PORT = process.env.PORT || 4441;
 //Block End Intialize the app
 
 
