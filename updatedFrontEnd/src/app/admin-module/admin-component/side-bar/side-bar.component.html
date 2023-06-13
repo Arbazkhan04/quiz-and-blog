@@ -1,0 +1,38 @@
+<mat-sidenav-container class="sidenav-container" opened>
+    <mat-sidenav #sidenav mode="side" class="sidenav" (closedStart)="onSidenavClose()" opened>
+      <div class="side-nav-content">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-list mt-4">
+          <li class="nav-item  mt-1" matRipple routerLinkActive="active" routerLink="./dashboard" role="button">
+            <i class="fa-solid fa-house"></i>
+            <span class="ms-3">
+              <a class="">Dashboard</a>
+            </span>
+          </li>
+          <li class="nav-item  mt-1" matRipple routerLinkActive="active" routerLink="./createquiz" role="button">
+            <i class="fab fa-uncharted"></i>
+            <span class="ms-3">
+              <a class="">createQuiz</a>
+            </span>
+          </li>
+          <li class="nav-item  mt-1" matRipple routerLinkActive="active" routerLink="./append-quiz" role="button">
+            <i class="fab fa-uncharted"></i>
+            <span class="ms-3">
+              <a class="">Append Quiz</a>
+            </span>
+          </li>
+          <li class="nav-item  mt-1" matRipple routerLinkActive="active" routerLink="./quiz-analystic" role="button">
+            <i class="fab fa-uncharted"></i>
+            <span class="ms-3">
+              <a class="">Quiz-Analystics</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="main-content" [ngClass]="{'full-width': isSidenavClosed}">
+      <button class="menu-button ms-2 my-1" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

@@ -1,4 +1,4 @@
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+<!-- <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" >Quiz And Blogs</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
                 <span data-feather="home"></span><i class="fab fa-uncharted"></i>
                 Dashboard
               </a>
-              <!-- //i ahve use ./dash-board because there is any other slug which is admin that's way i use . if there are two slugs then i will use .. two dots -->
+           
             </li>
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" routerLink="./createquiz" routerLinkActive="router-link-active" >
@@ -81,4 +81,54 @@
         <router-outlet></router-outlet> 
       </main>
     </div>
+  </div> -->
+
+
+
+
+<nav class="navbar navbar-expand-lg new-nav mb-1">
+  <div class="container-fluid ms-5 me-5">
+    <a class="navbar-brand" >Eleven-Rooms</a>
+    <button class="navbar-toggler text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+      <mat-icon class="navbar-toggler-icon">menu</mat-icon>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarsExample07">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <form class="">
+        <div class="dropdown text-end me-4" role="button">
+          <a  class=" link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="bell-icon d-inline-block ">
+              <i class="fa-solid fa-bell"></i>
+            </div>
+          </a>
+          <ul class="dropdown-menu text-small bg-white" role="button">
+            <li><a class="dropdown-item">Subscribe</a></li>
+            <li><a class="dropdown-item">News Letter</a></li>
+            <li><a class="dropdown-item">UnSubscribe</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item">Sign out</a></li>
+          </ul>
+        </div>
+      </form>
+      <form>
+        <div class="dropdown img text-end" role="button" style="margin-right: 60px;">
+          <a  class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://images.unsplash.com/photo-1651613186173-d7a79a78c971?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small bg-white" role="button">
+            <li><a class="dropdown-item">New project...</a></li>
+            <li><a class="dropdown-item">Settings</a></li>
+            <li><a class="dropdown-item">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+          </ul>
+        </div>
+      </form>
+    </div>
   </div>
+</nav>
+<!-- header navbar -->
+
+<app-side-bar></app-side-bar>
