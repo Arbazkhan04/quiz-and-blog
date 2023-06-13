@@ -1,28 +1,28 @@
 <div class="container">
-    <div class="row">
-        <h1>Welcome to the Quiz Aanalystics</h1>
-         <h3>Select Your Organization</h3>
-         <div class="col-4">
-            <div class="card shadow d-flex justify-content-center " style="width: 70rem;">
-              <!-- <img src="..." class="card-img-top" alt="..."> -->
-              <div class="card-body">
-                <h5 class="card-title" >Select Your Course</h5>
-                <div class="mb-3">
-                  <label class="tag">Select-organization</label>
-                  <select name="selectColor" (change)="onChageFetchDataFromDropDown($event)"
-                      class="form-control selectColor" id="" placeholder="selectColor" >
-                      <option value="" selected>--- Select an organization ---</option>
-                      <option *ngFor="let item of organaztions">{{item}}</option>
-                  </select>
-            </div>
-            <div class="mb-3">
-              <label class="tag">Select-subject</label>
-              <select name="selectColor" (change)="onChageFetchDataFormDubjectDropDown($event)"
-                  class="form-control selectColor" id="" placeholder="selectColor" >
-                  <option value="" selected>--- Select an organization ---</option>
-                  <option *ngFor="let item of subjectName">{{item}}</option>
-              </select>
-        </div>
+  <div class="row">
+    <h1>Welcome to the Quiz Aanalystics</h1>
+    <h3>Select Your Organization</h3>
+    <div class="col-4">
+      <div class="card shadow d-flex justify-content-center " style="width: 70rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title">Select Your Course</h5>
+          <div class="mb-3">
+            <label class="tag">Select-organization</label>
+            <select name="selectColor" (change)="onChageFetchDataFromDropDown($event)" class="form-control selectColor"
+              id="" placeholder="selectColor">
+              <option value="" selected>--- Select an organization ---</option>
+              <option *ngFor="let item of organaztions">{{item}}</option>
+            </select>
           </div>
+          <div class="mb-3">
+            <label class="tag">Select-subject</label>
+            <select name="selectColor" (change)="onChageFetchDataFormDubjectDropDown($event)"
+              class="form-control selectColor" id="" placeholder="selectColor">
+              <option value="" selected>--- Select an organization ---</option>
+              <option *ngFor="let item of subjectName">{{item}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
