@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'mian-module', loadChildren: () => import('./main-module/main-module.module').then(m => m.MainModuleModule) }, 
 
   { path: 'admin-module', canActivate :[AuthGuard], loadChildren: () => import('./admin-module/admin-module.module').then(m => m.AdminModuleModule) },
-  { path: 'ManagementModule', loadChildren: () => import('./management-module/management-module.module').then(m => m.ManagementModuleModule) }];
+  { path: 'ManagementModule', loadChildren: () => import('./management-module/management-module.module').then(m => m.ManagementModuleModule) },
+  { path: 'user-module', loadChildren: () => import('./user-module/user-module.module').then(m => m.UserModuleModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
