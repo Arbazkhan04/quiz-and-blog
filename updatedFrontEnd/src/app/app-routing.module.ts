@@ -9,7 +9,8 @@ const routes: Routes = [
 
   { path: 'admin-module', canActivate :[AuthGuard], loadChildren: () => import('./admin-module/admin-module.module').then(m => m.AdminModuleModule) },
   { path: 'ManagementModule', loadChildren: () => import('./management-module/management-module.module').then(m => m.ManagementModuleModule) },
-  { path: 'user-module', loadChildren: () => import('./user-module/user-module.module').then(m => m.UserModuleModule) }];
+  { path: 'user-module', loadChildren: () => import('./user-module/user-module.module').then(m => m.UserModuleModule) },
+  { path: 'updatedUserMdodule', loadChildren: () => import('./upadted-uer-module/upadted-uer-module.module').then(m => m.UpadtedUerModuleModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
